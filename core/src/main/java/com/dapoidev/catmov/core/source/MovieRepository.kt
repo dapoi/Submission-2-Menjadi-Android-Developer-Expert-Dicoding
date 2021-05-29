@@ -19,7 +19,7 @@ class MovieRepository(
 
 
     override fun getListMovie(): Flow<Resource<List<Movie>>> =
-        object : com.dapoidev.catmov.core.source.NetworkBoundResource<List<Movie>, List<MovieResponse>>() {
+        object :NetworkBoundResource<List<Movie>, List<MovieResponse>>() {
             override fun loadFromDB(): Flow<List<Movie>> {
                 return localDataSource.getListMovie().map {
                     DataMapper.mapEntitiesToDomain(it)

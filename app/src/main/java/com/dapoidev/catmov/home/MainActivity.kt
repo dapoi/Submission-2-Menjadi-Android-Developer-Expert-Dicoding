@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dapoidev.catmov.core.source.Resource
 import com.dapoidev.catmov.core.ui.MovieAdapter
 import com.dapoidev.catmov.databinding.ActivityMainBinding
 import com.dapoidev.catmov.detail.DetailActivity
@@ -13,13 +14,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val movieViewModel: MovieViewModel by viewModel()
-    private lateinit var binding: ActivityMainBinding
     private lateinit var movieAdapter: MovieAdapter
+    private val movieViewModel: MovieViewModel by viewModel()
+    private var _activityMainBinding: ActivityMainBinding? = null
+    private val binding get() = _activityMainBinding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        _activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         movieAdapter = MovieAdapter()
@@ -33,12 +35,12 @@ class MainActivity : AppCompatActivity() {
         movieViewModel.movie.observe(this, {
             if (it != null) {
                 when (it) {
-                    is com.dapoidev.catmov.core.source.Resource.Loading -> true.progressbar()
-                    is com.dapoidev.catmov.core.source.Resource.Success -> {
+                    is Resource.Loading -> true.progressbar()
+                    is Resource.Success -> {
                         false.progressbar()
                         movieAdapter.setData(it.data)
                     }
-                    is com.dapoidev.catmov.core.source.Resource.Error -> {
+                    is Resource.Error -> {
                         false.progressbar()
                         binding.viewError.apply {
                             root.visibility = View.INVISIBLE
@@ -68,5 +70,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun Boolean.progressbar() {
         binding.progressBar.visibility = if (this) View.VISIBLE else View.INVISIBLE
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _activityMainBinding = null
     }
 }
