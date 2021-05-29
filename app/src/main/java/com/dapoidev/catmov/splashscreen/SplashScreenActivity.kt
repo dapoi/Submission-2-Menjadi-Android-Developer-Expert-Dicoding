@@ -10,7 +10,7 @@ import com.dapoidev.catmov.home.MainActivity
 
 class SplashScreenActivity : AppCompatActivity() {
 
-    private val delay: Int = 3000
+    private val delay: Int = 3500
     private lateinit var binding: ActivitySplashScreenBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
