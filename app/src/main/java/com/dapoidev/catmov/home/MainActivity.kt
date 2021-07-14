@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.dapoidev.catmov.core.source.Resource
 import com.dapoidev.catmov.core.ui.MovieAdapter
 import com.dapoidev.catmov.databinding.ActivityMainBinding
@@ -65,6 +66,18 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@MainActivity)
             setHasFixedSize(true)
             adapter = movieAdapter
+
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+
+                    if (dy > 0 && binding.fab.visibility == View.VISIBLE) {
+                        binding.fab.hide()
+                    } else {
+                        binding.fab.show()
+                    }
+                }
+            })
         }
     }
 

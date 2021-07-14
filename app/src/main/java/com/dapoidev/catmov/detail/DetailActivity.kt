@@ -1,6 +1,7 @@
 package com.dapoidev.catmov.detail
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
@@ -53,8 +54,10 @@ class DetailActivity : AppCompatActivity() {
     private fun setStatusFav(statusFav: Boolean) {
         if (statusFav) {
             detailBinding.fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_love_true))
+            Toast.makeText(this, "Add to Favorite", Toast.LENGTH_SHORT).show()
         } else {
             detailBinding.fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_fav_false))
+            Toast.makeText(this, "Remove from Favorite", Toast.LENGTH_SHORT).show()
         }
     }
 
