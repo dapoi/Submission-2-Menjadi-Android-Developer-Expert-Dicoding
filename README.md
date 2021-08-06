@@ -1,6 +1,8 @@
 # Submission-2-Menjadi-Android-Developer-Expert-Dicoding 
 ## Movie App
 [![dapoi](https://circleci.com/gh/dapoi/Submission-2-Menjadi-Android-Developer-Expert-Dicoding.svg?style=svg)](https://app.circleci.com/pipelines/github/dapoi/Submission-2-Menjadi-Android-Developer-Expert-Dicoding)
+
+
 <img src="https://user-images.githubusercontent.com/68842666/119378960-0d365b00-bce9-11eb-9982-b53383e843c8.png"
 alt="Home"  
 width="200" />
