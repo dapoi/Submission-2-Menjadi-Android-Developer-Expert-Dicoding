@@ -1,13 +1,13 @@
 package com.dapoidev.catmov.favorite
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dapoidev.catmov.core.ui.MovieAdapter
-import com.dapoidev.catmov.databinding.ActivityFavoriteBinding
 import com.dapoidev.catmov.detail.DetailActivity
+import com.dapoidev.catmov.favorite.databinding.ActivityFavoriteBinding
 import com.dapoidev.catmov.favorite.di.favoriteModule
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
